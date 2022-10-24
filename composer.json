@@ -73,8 +73,5 @@
         "psr-4": {
             "FOS\\UserBundle\\Tests\\": "tests"
         }
-    },
-    "support": {
-        "docs": "https://symfony.com/doc/master/bundles/FOSUserBundle/index.html"
     }
 }

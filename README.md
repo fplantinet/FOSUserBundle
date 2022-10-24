@@ -34,17 +34,10 @@ The package only receives minimal maintenance to allow existing projects to upgr
 Documentation
 -------------
 
-The source of the documentation is stored in the `Resources/doc/` folder
-in this bundle, and available on symfony.com:
+The source of the documentation is stored in the `docs/` folder
+in this bundle.
 
-[Read the Documentation for master](https://symfony.com/doc/master/bundles/FOSUserBundle/index.html)
-
-[Read the Documentation for 1.3.x](https://symfony.com/doc/1.3.x/bundles/FOSUserBundle/index.html)
-
-Installation
-------------
-
-All the installation instructions are located in the documentation.
+[Read the Documentation for the current branch](docs/index.rst)
 
 License
 -------
