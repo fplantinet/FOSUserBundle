@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="./Tests/bootstrap.php" colors="true">
+<phpunit bootstrap="./tests/bootstrap.php" colors="true">
 
     <testsuites>
         <testsuite name="FOSUserBundle test suite">
-            <directory suffix="Test.php">./Tests</directory>
+            <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>./</directory>
+            <directory>src/</directory>
             <exclude>
-                <directory>./Resources</directory>
-                <directory>./Tests</directory>
-                <directory>./vendor</directory>
+                <directory>src/Resources</directory>
             </exclude>
         </whitelist>
     </filter>
 
     <php>
-        <env name="SYMFONY_DEPRECATIONS_HELPER" value="ignoreFile=Tests/ignored-deprecations.txt&amp;max[total]=0" />
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="ignoreFile=tests/ignored-deprecations.txt&amp;max[total]=0" />
     </php>
 </phpunit>

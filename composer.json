@@ -66,15 +66,12 @@
     },
     "autoload": {
         "psr-4": {
-            "FOS\\UserBundle\\": ""
-        },
-        "exclude-from-classmap": [
-            "/Tests/"
-        ]
+            "FOS\\UserBundle\\": "src"
+        }
     },
     "autoload-dev": {
         "psr-4": {
-            "FOS\\UserBundle\\Tests\\": "/Tests/"
+            "FOS\\UserBundle\\Tests\\": "tests"
         }
     },
     "support": {
