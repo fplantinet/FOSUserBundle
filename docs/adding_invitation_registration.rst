@@ -9,7 +9,9 @@ Invitation model
 ----------------
 
 First we need to add the invitation entity. An invitation is represented
-by a unique code/identifier generated in the constructor::
+by a unique code/identifier generated in the constructor:
+
+.. code-block:: php
 
     <?php
     // src/AppBundle/Entity/Invitation.php
@@ -68,7 +70,9 @@ by a unique code/identifier generated in the constructor::
         }
     }
 
-Next we map our ``Invitation`` entity to our ``User`` with a one-to-one association::
+Next we map our ``Invitation`` entity to our ``User`` with a one-to-one association:
+
+.. code-block:: php
 
     <?php
     // src/AppBundel/Entity/User.php
@@ -105,7 +109,9 @@ Next we map our ``Invitation`` entity to our ``User`` with a one-to-one associat
 Add invitation to RegistrationFormType
 --------------------------------------
 
-Override the default registration form with your own::
+Override the default registration form with your own:
+
+.. code-block:: php
 
     <?php
     // src/AppBundle/Form/RegistrationFormType.php
@@ -134,7 +140,9 @@ Override the default registration form with your own::
         }
     }
 
-Create the invitation field::
+Create the invitation field:
+
+.. code-block:: php
 
     <?php
     // src/AppBundle/Form/InvitationFormType.php
@@ -182,7 +190,9 @@ Create the invitation field::
         }
     }
 
-Create the custom data transformer::
+Create the custom data transformer:
+
+.. code-block:: php
 
     <?php
     // src/AppBundle/Form/DataTransformer/InvitationToCodeTransformer.php

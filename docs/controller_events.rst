@@ -20,7 +20,9 @@ Controllers with a form also dispatch an ``INITIALIZE`` event after the entity i
 fetched, but before the form is created.
 
 For instance, this listener will change the redirection after the password
-resetting to go to the homepage instead of the profile::
+resetting to go to the homepage instead of the profile:
+
+.. code-block:: php
 
     // src/Acme/UserBundle/EventListener/PasswordResettingListener.php
 
@@ -89,7 +91,9 @@ Registration success listener with enabled confirmation at the same time
 
 When you have registration confirmation and you want to hook up to
 ``FOSUserEvents::REGISTRATION_SUCCESS`` event you will have to prioritize this listener to be called
-before ``FOS\UserBundle\EventListener\EmailConfirmationListener::onRegistrationSuccess``::
+before ``FOS\UserBundle\EventListener\EmailConfirmationListener::onRegistrationSuccess``:
+
+.. code-block:: php
 
     public static function getSubscribedEvents()
     {

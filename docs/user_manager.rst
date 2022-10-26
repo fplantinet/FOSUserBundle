@@ -105,7 +105,9 @@ Updating a User object
     This will then be equivalent to calling ``updateCanonicalFields`` and
     ``updatePassword``.
 
-An ORM example::
+An ORM example:
+
+.. code-block:: php
 
     class MainController extends Controller
     {
