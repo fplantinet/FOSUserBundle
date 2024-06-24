@@ -51,11 +51,17 @@ class SecurityController extends AbstractController
         ]);
     }
 
+    /**
+     * @return never
+     */
     public function checkAction()
     {
         throw new \RuntimeException('You must configure the check path to be handled by the firewall using form_login in your security firewall configuration.');
     }
 
+    /**
+     * @return never
+     */
     public function logoutAction()
     {
         throw new \RuntimeException('You must activate the logout in your security firewall configuration.');
@@ -64,6 +70,8 @@ class SecurityController extends AbstractController
     /**
      * Renders the login template with the given parameters. Overwrite this function in
      * an extended controller to provide additional data for the login template.
+     *
+     * @param array<string, mixed> $data
      */
     protected function renderLogin(array $data): Response
     {

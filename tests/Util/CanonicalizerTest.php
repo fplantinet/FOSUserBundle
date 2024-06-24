@@ -19,14 +19,14 @@ class CanonicalizerTest extends TestCase
     /**
      * @dataProvider canonicalizeProvider
      */
-    public function testCanonicalize($source, $expectedResult)
+    public function testCanonicalize(?string $source, ?string $expectedResult)
     {
         $canonicalizer = new Canonicalizer();
         $this->assertSame($expectedResult, $canonicalizer->canonicalize($source));
     }
 
     /**
-     * @return array
+     * @return iterable<array{string|null, string|null}>
      */
     public function canonicalizeProvider()
     {

@@ -23,6 +23,9 @@ class GetResponseUserEvent extends UserEvent
      */
     private $response;
 
+    /**
+     * @return void
+     */
     public function setResponse(Response $response)
     {
         $this->response = $response;

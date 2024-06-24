@@ -43,6 +43,8 @@ interface UserManagerInterface
     /**
      * Finds one user by the given criteria.
      *
+     * @param array<string, mixed> $criteria
+     *
      * @return UserInterface|null
      */
     public function findUserBy(array $criteria);
@@ -86,7 +88,7 @@ interface UserManagerInterface
     /**
      * Returns a collection with all user instances.
      *
-     * @return \Traversable<UserInterface>
+     * @return iterable<UserInterface>
      */
     public function findUsers();
 

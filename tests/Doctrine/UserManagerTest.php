@@ -16,6 +16,7 @@ use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
 use FOS\UserBundle\Doctrine\UserManager;
 use FOS\UserBundle\Model\User;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class UserManagerTest extends TestCase
@@ -24,9 +25,13 @@ class UserManagerTest extends TestCase
 
     /** @var UserManager */
     protected $userManager;
-    /** @var \PHPUnit_Framework_MockObject_MockObject */
+    /**
+     * @var ObjectManager&MockObject
+     */
     protected $om;
-    /** @var \PHPUnit_Framework_MockObject_MockObject */
+    /**
+     * @var ObjectRepository<object>&MockObject
+     */
     protected $repository;
 
     protected function setUp(): void

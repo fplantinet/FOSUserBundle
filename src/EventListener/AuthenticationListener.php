@@ -59,6 +59,8 @@ class AuthenticationListener implements EventSubscriberInterface
 
     /**
      * @param string $eventName
+     *
+     * @return void
      */
     public function authenticate(FilterUserResponseEvent $event, $eventName, EventDispatcherInterface $eventDispatcher)
     {

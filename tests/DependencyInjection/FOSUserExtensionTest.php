@@ -24,7 +24,7 @@ class FOSUserExtensionTest extends TestCase
 
     protected function tearDown(): void
     {
-        $this->configuration = null;
+        unset($this->configuration);
     }
 
     public function testUserLoadThrowsExceptionUnlessDatabaseDriverSet()
@@ -395,7 +395,7 @@ class FOSUserExtensionTest extends TestCase
     /**
      * getEmptyConfig.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function getEmptyConfig()
     {
@@ -415,7 +415,7 @@ EOF;
     }
 
     /**
-     * @return mixed
+     * @return array<string, mixed>
      */
     protected function getFullConfig()
     {
@@ -477,7 +477,7 @@ EOF;
      * @param string $value
      * @param string $key
      */
-    private function assertAlias($value, $key)
+    private function assertAlias($value, $key): void
     {
         $this->assertSame($value, (string) $this->configuration->getAlias($key), sprintf('%s alias is correct', $key));
     }
@@ -486,7 +486,7 @@ EOF;
      * @param mixed  $value
      * @param string $key
      */
-    private function assertParameter($value, $key)
+    private function assertParameter($value, $key): void
     {
         $this->assertSame($value, $this->configuration->getParameter($key), sprintf('%s parameter is correct', $key));
     }
@@ -494,7 +494,7 @@ EOF;
     /**
      * @param string $id
      */
-    private function assertHasDefinition($id)
+    private function assertHasDefinition($id): void
     {
         $this->assertTrue($this->configuration->hasDefinition($id) ?: $this->configuration->hasAlias($id));
     }
@@ -502,7 +502,7 @@ EOF;
     /**
      * @param string $id
      */
-    private function assertNotHasDefinition($id)
+    private function assertNotHasDefinition($id): void
     {
         $this->assertFalse($this->configuration->hasDefinition($id) ?: $this->configuration->hasAlias($id));
     }

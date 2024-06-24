@@ -11,7 +11,9 @@
 
 namespace FOS\UserBundle\Tests\Security;
 
+use FOS\UserBundle\Model\UserManagerInterface;
 use FOS\UserBundle\Security\UserProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
@@ -20,7 +22,7 @@ use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 class UserProviderTest extends TestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
+     * @var UserManagerInterface&MockObject
      */
     private $userManager;
 

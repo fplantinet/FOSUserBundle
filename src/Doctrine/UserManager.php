@@ -76,7 +76,7 @@ class UserManager extends BaseUserManager
     }
 
     /**
-     * @return \Traversable<UserInterface>
+     * @return iterable<UserInterface>
      */
     public function findUsers()
     {

@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Tests\Security;
 
+use FOS\UserBundle\Model\User;
 use FOS\UserBundle\Security\UserChecker;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Security\Core\Exception\DisabledException;
@@ -32,7 +33,8 @@ class UserCheckerTest extends TestCase
         $userMock = $this->getUser(true);
         $checker = new UserChecker();
 
-        $this->assertNull($checker->checkPreAuth($userMock));
+        $checker->checkPreAuth($userMock);
+        $this->expectNotToPerformAssertions();
     }
 
     public function testCheckPostAuthSuccess()
@@ -40,10 +42,11 @@ class UserCheckerTest extends TestCase
         $userMock = $this->getUser(true);
         $checker = new UserChecker();
 
-        $this->assertNull($checker->checkPostAuth($userMock));
+        $checker->checkPostAuth($userMock);
+        $this->expectNotToPerformAssertions();
     }
 
-    private function getUser($isEnabled)
+    private function getUser($isEnabled): User
     {
         $userMock = $this->getMockBuilder('FOS\UserBundle\Model\User')->getMock();
         $userMock

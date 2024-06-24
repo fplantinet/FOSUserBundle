@@ -13,6 +13,7 @@ namespace FOS\UserBundle\Tests\Util;
 
 use FOS\UserBundle\Tests\TestUser;
 use FOS\UserBundle\Util\HashingPasswordUpdater;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactoryInterface;
 use Symfony\Component\PasswordHasher\LegacyPasswordHasherInterface;
@@ -24,6 +25,9 @@ class HashingPasswordUpdaterTest extends TestCase
      * @var HashingPasswordUpdater
      */
     private $updater;
+    /**
+     * @var PasswordHasherFactoryInterface&MockObject
+     */
     private $passwordHasherFactory;
 
     protected function setUp(): void
@@ -50,7 +54,7 @@ class HashingPasswordUpdaterTest extends TestCase
 
         $hasher->expects($this->once())
             ->method('hash')
-            ->with('password', $this->identicalTo(null))
+            ->with('password')
             ->will($this->returnValue('hashedPassword'));
 
         $this->updater->hashPassword($user);

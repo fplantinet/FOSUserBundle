@@ -14,6 +14,7 @@ namespace FOS\UserBundle\Command;
 use FOS\UserBundle\Util\UserManipulator;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -80,7 +81,10 @@ EOT
 
                 return $username;
             });
-            $answer = $this->getHelper('question')->ask($input, $output, $question);
+
+            $helper = $this->getHelper('question');
+            \assert($helper instanceof QuestionHelper);
+            $answer = $helper->ask($input, $output, $question);
 
             $input->setArgument('username', $answer);
         }

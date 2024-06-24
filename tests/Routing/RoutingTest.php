@@ -21,8 +21,9 @@ class RoutingTest extends TestCase
     /**
      * @dataProvider loadRoutingProvider
      *
-     * @param string $routeName
-     * @param string $path
+     * @param string   $routeName
+     * @param string   $path
+     * @param string[] $methods
      */
     public function testLoadRouting($routeName, $path, array $methods)
     {
@@ -49,7 +50,7 @@ class RoutingTest extends TestCase
     }
 
     /**
-     * @return array
+     * @return iterable<array{string, string, string[]}>
      */
     public function loadRoutingProvider()
     {
