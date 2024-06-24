@@ -145,8 +145,3 @@ SecurityBundle integration
 
 The bundle provides several implementation of ``Symfony\Component\Security\Core\UserProviderInterface``
 on top of the ``UserManagerInterface``.
-
-Although the built-in user managers also implement
-``Symfony\Component\Security\Core\User\UserProviderInterface``, using the
-UserManager as user provider is deprecated and will tbe removed in future
-versions. Use ``FOS\UserBundle\Security\UserProvider`` instead.
