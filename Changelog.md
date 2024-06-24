@@ -1,6 +1,11 @@
 Changelog
 =========
 
+### 3.3.0 (2024-06-24)
+
+* Added a mailer implementation based on symfony/mailer and Twig
+* Added tentative return types in most methods
+
 ### 3.2.1 (2023-07-06)
 
 * Fixed remaining deprecations with Symfony 6.3
