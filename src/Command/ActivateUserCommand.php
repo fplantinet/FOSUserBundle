@@ -28,9 +28,6 @@ use Symfony\Component\Console\Question\Question;
 #[AsCommand(name: 'fos:user:activate', description: 'Activate a user')]
 final class ActivateUserCommand extends Command
 {
-    // BC with Symfony <5.3
-    protected static $defaultName = 'fos:user:activate';
-
     private $userManipulator;
 
     public function __construct(UserManipulator $userManipulator)
@@ -43,9 +40,6 @@ final class ActivateUserCommand extends Command
     protected function configure(): void
     {
         $this
-            // BC with Symfony <5.3
-            ->setName('fos:user:activate')
-            ->setDescription('Activate a user')
             ->setDefinition([
                 new InputArgument('username', InputArgument::REQUIRED, 'The username'),
             ])

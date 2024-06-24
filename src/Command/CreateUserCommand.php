@@ -31,9 +31,6 @@ use Symfony\Component\Console\Question\Question;
 #[AsCommand(name: 'fos:user:create', description: 'Create a user.')]
 final class CreateUserCommand extends Command
 {
-    // BC with Symfony <5.3
-    protected static $defaultName = 'fos:user:create';
-
     private $userManipulator;
 
     public function __construct(UserManipulator $userManipulator)
@@ -46,9 +43,6 @@ final class CreateUserCommand extends Command
     protected function configure(): void
     {
         $this
-            // BC with Symfony <5.3
-            ->setName('fos:user:create')
-            ->setDescription('Create a user.')
             ->setDefinition([
                 new InputArgument('username', InputArgument::REQUIRED, 'The username'),
                 new InputArgument('email', InputArgument::REQUIRED, 'The email'),

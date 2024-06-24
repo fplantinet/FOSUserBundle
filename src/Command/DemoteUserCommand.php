@@ -24,17 +24,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand(name: 'fos:user:demote', description: 'Demote a user by removing a role')]
 final class DemoteUserCommand extends RoleCommand
 {
-    // BC with Symfony <5.3
-    protected static $defaultName = 'fos:user:demote';
-
     protected function configure(): void
     {
         parent::configure();
 
         $this
-            // BC with Symfony <5.3
-            ->setName('fos:user:demote')
-            ->setDescription('Demote a user by removing a role')
             ->setHelp(<<<'EOT'
 The <info>fos:user:demote</info> command demotes a user by removing a role
 
