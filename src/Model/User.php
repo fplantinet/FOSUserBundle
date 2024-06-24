@@ -183,10 +183,7 @@ abstract class User implements UserInterface, EquatableInterface, \Serializable
         return $this;
     }
 
-    /**
-     * @return void
-     */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
         $this->plainPassword = null;
     }
