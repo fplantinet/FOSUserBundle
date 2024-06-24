@@ -30,17 +30,17 @@ class RoutingTest extends TestCase
         $loader = new XmlFileLoader($locator);
 
         $collection = new RouteCollection();
-        $collection->addCollection($loader->load(__DIR__.'/../../Resources/config/routing/change_password.xml'));
-        $subCollection = $loader->load(__DIR__.'/../../Resources/config/routing/profile.xml');
+        $collection->addCollection($loader->load(__DIR__.'/../../src/Resources/config/routing/change_password.xml'));
+        $subCollection = $loader->load(__DIR__.'/../../src/Resources/config/routing/profile.xml');
         $subCollection->addPrefix('/profile');
         $collection->addCollection($subCollection);
-        $subCollection = $loader->load(__DIR__.'/../../Resources/config/routing/registration.xml');
+        $subCollection = $loader->load(__DIR__.'/../../src/Resources/config/routing/registration.xml');
         $subCollection->addPrefix('/register');
         $collection->addCollection($subCollection);
-        $subCollection = $loader->load(__DIR__.'/../../Resources/config/routing/resetting.xml');
+        $subCollection = $loader->load(__DIR__.'/../../src/Resources/config/routing/resetting.xml');
         $subCollection->addPrefix('/resetting');
         $collection->addCollection($subCollection);
-        $collection->addCollection($loader->load(__DIR__.'/../../Resources/config/routing/security.xml'));
+        $collection->addCollection($loader->load(__DIR__.'/../../src/Resources/config/routing/security.xml'));
 
         $route = $collection->get($routeName);
         $this->assertNotNull($route, sprintf('The route "%s" should exists', $routeName));

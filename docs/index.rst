@@ -61,7 +61,9 @@ If you encounter installation errors pointing at a lack of configuration paramet
 Step 2: Enable the bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Enable the bundle in the kernel::
+Enable the bundle in the kernel:
+
+.. code-block:: php
 
     <?php
     // app/AppKernel.php
@@ -186,7 +188,9 @@ b) MongoDB User class
 
 If you're persisting your users via the Doctrine MongoDB ODM, then your ``User``
 class should live in the ``Document`` namespace of your bundle and look like
-this to start::
+this to start:
+
+.. code-block:: php
 
     <?php
     // src/AppBundle/Document/User.php
@@ -218,7 +222,9 @@ c) CouchDB User class
 
 If you're persisting your users via the Doctrine CouchDB ODM, then your ``User``
 class should live in the ``CouchDocument`` namespace of your bundle and look
-like this to start::
+like this to start:
+
+.. code-block:: php
 
     <?php
     // src/AppBundle/CouchDocument/User.php
