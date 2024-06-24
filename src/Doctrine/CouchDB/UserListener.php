@@ -22,6 +22,8 @@ use FOS\UserBundle\Util\PasswordUpdaterInterface;
  * @internal
  *
  * @final
+ *
+ * @deprecated The CouchDB ODM integration is deprecated since 3.3.0 because the CouchDB ODM itself is unmaintained.
  */
 class UserListener implements EventSubscriber
 {

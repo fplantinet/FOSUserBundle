@@ -81,7 +81,7 @@ Step 3: Create your User class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The goal of this bundle is to persist some ``User`` class to a database (MySql,
-MongoDB, CouchDB, etc). Your first job, then, is to create the ``User`` class
+MongoDB, etc). Your first job, then, is to create the ``User`` class
 for your application. This class can look and act however you want: add any
 properties or methods you find useful. This is *your* ``User`` class.
 
@@ -98,8 +98,7 @@ to make it easier to create your entity. Here is how you use it:
     redefine the mapping for the other fields as it is provided by the bundle.
 
 In the following sections, you'll see examples of how your ``User`` class should
-look, depending on how you're storing your users (Doctrine ORM, MongoDB ODM,
-or CouchDB ODM).
+look, depending on how you're storing your users (Doctrine ORM or MongoDB ODM).
 
 .. note::
 
@@ -219,6 +218,9 @@ this to start:
 
 c) CouchDB User class
 .....................
+
+.. note::
+    Support for the CouchDB ODM is deprecated as the Doctrine CouchDB ODM is unmaintained.
 
 If you're persisting your users via the Doctrine CouchDB ODM, then your ``User``
 class should live in the ``CouchDocument`` namespace of your bundle and look
@@ -349,7 +351,7 @@ of datastore you are using.
 
         # app/config/config.yml
         fos_user:
-            db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+            db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'custom'
             firewall_name: main
             user_class: AppBundle\Entity\User
             from_email:
@@ -360,7 +362,7 @@ of datastore you are using.
 
         <!-- app/config/config.xml -->
 
-        <!-- other valid 'db-driver' values are 'mongodb' and 'couchdb' -->
+        <!-- other valid 'db-driver' values are 'mongodb', 'couchdb' and 'custom' -->
         <fos_user:config
             db-driver="orm"
             firewall-name="main"
@@ -369,7 +371,7 @@ of datastore you are using.
 
 Only four configuration's nodes are required to use the bundle:
 
-* The type of datastore you are using (``orm``, ``mongodb`` or ``couchdb``).
+* The type of datastore you are using (``orm``, ``mongodb``, ``couchdb`` or ``custom```).
 * The firewall name which you configured in Step 4.
 * The fully qualified class name (FQCN) of the ``User`` class which you created in Step 3.
 * The default email address to use when the bundle send a registration confirmation to the user.
