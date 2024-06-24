@@ -26,10 +26,8 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 /**
  * @author Matthieu Bontemps <matthieu@knplabs.com>
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
- *
- * @final
  */
-class FOSUserBundle extends Bundle
+final class FOSUserBundle extends Bundle
 {
     public function build(ContainerBuilder $container): void
     {

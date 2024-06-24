@@ -22,11 +22,9 @@ use Symfony\Component\Console\Question\Question;
 
 /**
  * @internal
- *
- * @final
  */
 #[AsCommand(name: 'fos:user:change-password', description: 'Change the password of a user.')]
-class ChangePasswordCommand extends Command
+final class ChangePasswordCommand extends Command
 {
     // BC with Symfony <5.3
     protected static $defaultName = 'fos:user:change-password';

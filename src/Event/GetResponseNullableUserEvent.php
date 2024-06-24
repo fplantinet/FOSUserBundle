@@ -20,10 +20,8 @@ use Symfony\Contracts\EventDispatcher\Event;
  * Response user event that allows null user.
  *
  * @author Konstantinos Christofilos <kostas.christofilos@gmail.com>
- *
- * @final
  */
-class GetResponseNullableUserEvent extends Event
+final class GetResponseNullableUserEvent extends Event
 {
     /**
      * @var Request

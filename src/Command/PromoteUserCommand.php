@@ -22,11 +22,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @author Lenar Lõhmus <lenar@city.ee>
  *
  * @internal
- *
- * @final
  */
 #[AsCommand(name: 'fos:user:promote', description: 'Promotes a user by adding a role')]
-class PromoteUserCommand extends RoleCommand
+final class PromoteUserCommand extends RoleCommand
 {
     // BC with Symfony <5.3
     protected static $defaultName = 'fos:user:promote';

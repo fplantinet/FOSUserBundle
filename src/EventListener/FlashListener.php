@@ -20,10 +20,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @internal
- *
- * @final
  */
-class FlashListener implements EventSubscriberInterface
+final class FlashListener implements EventSubscriberInterface
 {
     /**
      * @var string[]

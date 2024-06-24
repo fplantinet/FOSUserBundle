@@ -22,10 +22,8 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * @internal
- *
- * @final
  */
-class FOSUserExtension extends Extension
+final class FOSUserExtension extends Extension
 {
     /**
      * @var array<string, array{registry: string, tag: string, listener_class?: string}>

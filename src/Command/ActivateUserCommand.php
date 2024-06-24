@@ -24,11 +24,9 @@ use Symfony\Component\Console\Question\Question;
  * @author Antoine Hérault <antoine.herault@gmail.com>
  *
  * @internal
- *
- * @final
  */
 #[AsCommand(name: 'fos:user:activate', description: 'Activate a user')]
-class ActivateUserCommand extends Command
+final class ActivateUserCommand extends Command
 {
     // BC with Symfony <5.3
     protected static $defaultName = 'fos:user:activate';

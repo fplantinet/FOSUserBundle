@@ -19,10 +19,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-/**
- * @final
- */
-class ProfileFormType extends AbstractType
+final class ProfileFormType extends AbstractType
 {
     /**
      * @var string

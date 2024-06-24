@@ -30,10 +30,8 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
  * Controller managing the user profile.
  *
  * @author Christophe Coevoet <stof@notk.org>
- *
- * @final
  */
-class ProfileController extends AbstractController
+final class ProfileController extends AbstractController
 {
     private $eventDispatcher;
     private $formFactory;

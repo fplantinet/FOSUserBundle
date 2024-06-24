@@ -25,10 +25,8 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  * @author Christophe Coevoet <stof@notk.org>
  *
  * @internal
- *
- * @final
  */
-class Configuration implements ConfigurationInterface
+final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {

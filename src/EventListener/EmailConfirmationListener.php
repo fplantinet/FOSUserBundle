@@ -21,10 +21,8 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @internal
- *
- * @final
  */
-class EmailConfirmationListener implements EventSubscriberInterface
+final class EmailConfirmationListener implements EventSubscriberInterface
 {
     private $mailer;
     private $tokenGenerator;

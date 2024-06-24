@@ -27,11 +27,9 @@ use Symfony\Component\Console\Question\Question;
  * @author Luis Cordova <cordoval@gmail.com>
  *
  * @internal
- *
- * @final
  */
 #[AsCommand(name: 'fos:user:create', description: 'Create a user.')]
-class CreateUserCommand extends Command
+final class CreateUserCommand extends Command
 {
     // BC with Symfony <5.3
     protected static $defaultName = 'fos:user:create';

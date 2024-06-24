@@ -21,10 +21,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
- *
- * @final
  */
-class SecurityController extends AbstractController
+final class SecurityController extends AbstractController
 {
     private $authenticationUtils;
     private $tokenManager;

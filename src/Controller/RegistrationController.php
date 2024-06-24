@@ -33,10 +33,8 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
- *
- * @final
  */
-class RegistrationController extends AbstractController
+final class RegistrationController extends AbstractController
 {
     private $eventDispatcher;
     private $formFactory;

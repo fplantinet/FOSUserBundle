@@ -13,10 +13,7 @@ namespace FOS\UserBundle\Event;
 
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @final
- */
-class GetResponseUserEvent extends UserEvent
+final class GetResponseUserEvent extends UserEvent
 {
     /**
      * @var Response|null

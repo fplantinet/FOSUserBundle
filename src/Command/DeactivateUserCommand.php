@@ -24,11 +24,9 @@ use Symfony\Component\Console\Question\Question;
  * @author Antoine Hérault <antoine.herault@gmail.com>
  *
  * @internal
- *
- * @final
  */
 #[AsCommand(name: 'fos:user:deactivate', description: 'Deactivate a user')]
-class DeactivateUserCommand extends Command
+final class DeactivateUserCommand extends Command
 {
     // BC with Symfony <5.3
     protected static $defaultName = 'fos:user:deactivate';

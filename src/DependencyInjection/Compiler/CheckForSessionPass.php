@@ -21,10 +21,8 @@ use Symfony\Flex\Recipe;
  * @author Ryan Weaver <ryan@knpuniversity.com>
  *
  * @internal
- *
- * @final
  */
-class CheckForSessionPass implements CompilerPassInterface
+final class CheckForSessionPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
