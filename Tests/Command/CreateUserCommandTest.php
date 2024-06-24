@@ -64,7 +64,7 @@ class CreateUserCommandTest extends TestCase
     /**
      * @return CommandTester
      */
-    private function createCommandTester(UserManipulator $manipulator, Application $application = null)
+    private function createCommandTester(UserManipulator $manipulator, ?Application $application = null)
     {
         if (null === $application) {
             $application = new Application();

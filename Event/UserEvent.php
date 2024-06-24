@@ -27,7 +27,7 @@ class UserEvent extends Event
      */
     protected $user;
 
-    public function __construct(UserInterface $user, Request $request = null)
+    public function __construct(UserInterface $user, ?Request $request = null)
     {
         $this->user = $user;
         $this->request = $request;

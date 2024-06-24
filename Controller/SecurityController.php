@@ -29,7 +29,7 @@ class SecurityController extends AbstractController
     private $authenticationUtils;
     private $tokenManager;
 
-    public function __construct(AuthenticationUtils $authenticationUtils, CsrfTokenManagerInterface $tokenManager = null)
+    public function __construct(AuthenticationUtils $authenticationUtils, ?CsrfTokenManagerInterface $tokenManager = null)
     {
         $this->authenticationUtils = $authenticationUtils;
         $this->tokenManager = $tokenManager;

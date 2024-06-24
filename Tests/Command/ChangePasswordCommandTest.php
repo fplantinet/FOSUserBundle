@@ -61,7 +61,7 @@ class ChangePasswordCommandTest extends TestCase
     /**
      * @return CommandTester
      */
-    private function createCommandTester(UserManipulator $userManipulator, Application $application = null)
+    private function createCommandTester(UserManipulator $userManipulator, ?Application $application = null)
     {
         if (null === $application) {
             $application = new Application();
