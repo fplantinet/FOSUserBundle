@@ -13,6 +13,8 @@ namespace FOS\UserBundle\Tests\Util;
 
 use FOS\UserBundle\Tests\TestUser;
 use FOS\UserBundle\Util\CanonicalFieldsUpdater;
+use FOS\UserBundle\Util\CanonicalizerInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class CanonicalFieldsUpdaterTest extends TestCase
@@ -21,7 +23,13 @@ class CanonicalFieldsUpdaterTest extends TestCase
      * @var CanonicalFieldsUpdater
      */
     private $updater;
+    /**
+     * @var CanonicalizerInterface&MockObject
+     */
     private $usernameCanonicalizer;
+    /**
+     * @var CanonicalizerInterface&MockObject
+     */
     private $emailCanonicalizer;
 
     protected function setUp(): void
@@ -53,6 +61,9 @@ class CanonicalFieldsUpdaterTest extends TestCase
         $this->assertSame('user@example.com', $user->getEmailCanonical());
     }
 
+    /**
+     * @return CanonicalizerInterface&MockObject
+     */
     private function getMockCanonicalizer()
     {
         return $this->getMockBuilder('FOS\UserBundle\Util\CanonicalizerInterface')->getMock();

@@ -55,7 +55,7 @@ abstract class User implements UserInterface, EquatableInterface, \Serializable
     /**
      * The salt to use for hashing.
      *
-     * @var string
+     * @var string|null
      */
     protected $salt;
 
@@ -91,7 +91,7 @@ abstract class User implements UserInterface, EquatableInterface, \Serializable
     protected $passwordRequestedAt;
 
     /**
-     * @var array
+     * @var string[]
      */
     protected $roles;
 
@@ -126,6 +126,9 @@ abstract class User implements UserInterface, EquatableInterface, \Serializable
         ];
     }
 
+    /**
+     * @param list<mixed> $data
+     */
     public function __unserialize(array $data): void
     {
         if (13 === count($data)) {
@@ -138,7 +141,7 @@ abstract class User implements UserInterface, EquatableInterface, \Serializable
             $data = array_values($data);
         }
 
-        list(
+        [
             $this->password,
             $this->salt,
             $this->usernameCanonical,
@@ -147,7 +150,7 @@ abstract class User implements UserInterface, EquatableInterface, \Serializable
             $this->id,
             $this->email,
             $this->emailCanonical
-        ) = $data;
+        ] = $data;
     }
 
     /**

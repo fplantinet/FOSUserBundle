@@ -55,6 +55,9 @@ class FormEvent extends Event
         return $this->request;
     }
 
+    /**
+     * @return void
+     */
     public function setResponse(Response $response)
     {
         $this->response = $response;

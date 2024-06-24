@@ -32,6 +32,7 @@ class ValidationPass implements CompilerPassInterface
         }
 
         $storage = $container->getParameter('fos_user.storage');
+        \assert(\is_string($storage));
 
         if ('custom' === $storage) {
             return;

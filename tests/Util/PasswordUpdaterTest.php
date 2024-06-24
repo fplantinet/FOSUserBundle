@@ -16,6 +16,7 @@ use FOS\UserBundle\Util\PasswordUpdater;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 
 /**
  * @group legacy
@@ -23,9 +24,12 @@ use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 class PasswordUpdaterTest extends TestCase
 {
     /**
-     * @var PasswordUpdater&MockObject
+     * @var PasswordUpdater
      */
     private $updater;
+    /**
+     * @var EncoderFactoryInterface&MockObject
+     */
     private $encoderFactory;
 
     protected function setUp(): void
@@ -112,8 +116,11 @@ class PasswordUpdaterTest extends TestCase
         $this->assertSame('hash', $user->getPassword());
     }
 
+    /**
+     * @return PasswordEncoderInterface&MockObject
+     */
     private function getMockPasswordEncoder()
     {
-        return $this->getMockBuilder('Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface')->getMock();
+        return $this->getMockBuilder(PasswordEncoderInterface::class)->getMock();
     }
 }

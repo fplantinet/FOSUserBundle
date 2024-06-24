@@ -228,6 +228,8 @@ interface UserInterface extends CompatUserInterface
      *
      * This overwrites any previous roles.
      *
+     * @param string[] $roles
+     *
      * @return static
      */
     public function setRoles(array $roles);

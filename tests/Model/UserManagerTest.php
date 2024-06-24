@@ -12,17 +12,24 @@
 namespace FOS\UserBundle\Tests\Model;
 
 use FOS\UserBundle\Model\UserManager;
+use FOS\UserBundle\Util\CanonicalFieldsUpdater;
+use FOS\UserBundle\Util\PasswordUpdaterInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class UserManagerTest extends TestCase
 {
-    /** @var UserManager|\PHPUnit_Framework_MockObject_MockObject */
+    /** @var UserManager&MockObject */
     private $manager;
 
-    /** @var \PHPUnit_Framework_MockObject_MockObject */
+    /**
+     * @var PasswordUpdaterInterface&MockObject
+     */
     private $passwordUpdater;
 
-    /** @var \PHPUnit_Framework_MockObject_MockObject */
+    /**
+     * @var CanonicalFieldsUpdater&MockObject
+     */
     private $fieldsUpdater;
 
     protected function setUp(): void
@@ -177,7 +184,9 @@ class UserManagerTest extends TestCase
     }
 
     /**
-     * @return mixed
+     * @param array{PasswordUpdaterInterface, CanonicalFieldsUpdater} $args
+     *
+     * @return UserManager&MockObject
      */
     private function getUserManager(array $args)
     {

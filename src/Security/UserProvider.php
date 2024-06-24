@@ -19,6 +19,9 @@ use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
+/**
+ * @template-implements UserProviderInterface<UserInterface>
+ */
 class UserProvider implements UserProviderInterface
 {
     /**
@@ -45,6 +48,9 @@ class UserProvider implements UserProviderInterface
         return $user;
     }
 
+    /**
+     * @param string $username
+     */
     public function loadUserByUsername($username): SecurityUserInterface
     {
         $user = $this->findUser($username);
@@ -81,6 +87,9 @@ class UserProvider implements UserProviderInterface
         return $reloadedUser;
     }
 
+    /**
+     * @param string $class
+     */
     public function supportsClass($class): bool
     {
         $userClass = $this->userManager->getClass();

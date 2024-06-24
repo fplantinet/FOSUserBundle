@@ -31,6 +31,9 @@ class CanonicalFieldsUpdater
         $this->emailCanonicalizer = $emailCanonicalizer;
     }
 
+    /**
+     * @return void
+     */
     public function updateCanonicalFields(UserInterface $user)
     {
         $user->setUsernameCanonical($this->canonicalizeUsername($user->getUsername()));

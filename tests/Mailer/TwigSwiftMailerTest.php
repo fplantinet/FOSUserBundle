@@ -12,7 +12,10 @@
 namespace FOS\UserBundle\Tests\Mailer;
 
 use FOS\UserBundle\Mailer\TwigSwiftMailer;
+use FOS\UserBundle\Model\UserInterface;
 use PHPUnit\Framework\TestCase;
+use Twig\Environment;
+use Twig\Loader\ArrayLoader;
 
 /**
  * @group legacy
@@ -81,7 +84,7 @@ class TwigSwiftMailerTest extends TestCase
         ];
     }
 
-    private function getTwigSwiftMailer()
+    private function getTwigSwiftMailer(): TwigSwiftMailer
     {
         return new TwigSwiftMailer(
             new \Swift_Mailer(
@@ -104,9 +107,9 @@ class TwigSwiftMailerTest extends TestCase
         );
     }
 
-    private function getTwigEnvironment()
+    private function getTwigEnvironment(): Environment
     {
-        return new \Twig\Environment(new \Twig\Loader\ArrayLoader(['foo' => <<<'TWIG'
+        return new Environment(new ArrayLoader(['foo' => <<<'TWIG'
 {% block subject 'foo' %}
 
 {% block body_text %}Test{% endblock %}
@@ -115,7 +118,7 @@ TWIG
         ]));
     }
 
-    private function getUser($emailAddress)
+    private function getUser($emailAddress): UserInterface
     {
         $user = $this->getMockBuilder('FOS\UserBundle\Model\UserInterface')->getMock();
         $user->method('getEmail')

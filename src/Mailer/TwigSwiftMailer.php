@@ -36,10 +36,13 @@ class TwigSwiftMailer implements MailerInterface
     protected $twig;
 
     /**
-     * @var array
+     * @var array{template: array{confirmation: string, resetting: string}, from_email: array{confirmation: array<string, string>|string, resetting: array<string, string>|string}}
      */
     protected $parameters;
 
+    /**
+     * @param array{template: array{confirmation: string, resetting: string}, from_email: array{confirmation: array<string, string>|string, resetting: array<string, string>|string}} $parameters
+     */
     public function __construct(\Swift_Mailer $mailer, UrlGeneratorInterface $router, Environment $twig, array $parameters)
     {
         $this->mailer = $mailer;
@@ -81,10 +84,10 @@ class TwigSwiftMailer implements MailerInterface
     }
 
     /**
-     * @param string $templateName
-     * @param array  $context
-     * @param array  $fromEmail
-     * @param string $toEmail
+     * @param string                       $templateName
+     * @param array<string, mixed>         $context
+     * @param array<string, string>|string $fromEmail
+     * @param string                       $toEmail
      *
      * @return void
      */

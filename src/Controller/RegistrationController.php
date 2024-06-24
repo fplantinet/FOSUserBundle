@@ -174,6 +174,10 @@ class RegistrationController extends AbstractController
     {
         $token = $this->tokenStorage->getToken();
 
+        if (null === $token) {
+            return null;
+        }
+
         if (method_exists($token, 'getFirewallName')) {
             $firewallName = $token->getFirewallName();
         } elseif (method_exists($token, 'getProviderKey')) {

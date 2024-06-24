@@ -15,8 +15,4 @@ use FOS\UserBundle\Model\User;
 
 class TestUser extends User
 {
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 }

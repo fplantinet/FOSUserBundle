@@ -78,6 +78,8 @@ class ProfileFormType extends AbstractType
 
     /**
      * Builds the embedded form representing the user.
+     *
+     * @param array<string, mixed> $options
      */
     protected function buildUserForm(FormBuilderInterface $builder, array $options): void
     {

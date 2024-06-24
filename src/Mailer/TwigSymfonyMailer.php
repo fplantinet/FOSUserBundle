@@ -26,8 +26,14 @@ final class TwigSymfonyMailer implements MailerInterface
     private SymfonyMailerInterface $mailer;
     private UrlGeneratorInterface $router;
     private Environment $twig;
+    /**
+     * @var array{template: array{confirmation: string, resetting: string}, from_email: array{confirmation: array{address: string, sender_name: string}, resetting: array{address: string, sender_name: string}}}
+     */
     private array $parameters;
 
+    /**
+     * @param array{template: array{confirmation: string, resetting: string}, from_email: array{confirmation: array{address: string, sender_name: string}, resetting: array{address: string, sender_name: string}}} $parameters
+     */
     public function __construct(SymfonyMailerInterface $mailer, UrlGeneratorInterface $router, Environment $twig, array $parameters)
     {
         $this->mailer = $mailer;

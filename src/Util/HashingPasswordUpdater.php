@@ -43,14 +43,15 @@ class HashingPasswordUpdater implements PasswordUpdaterInterface
         $hasher = $this->passwordHasherFactory->getPasswordHasher($user);
 
         if (!$hasher instanceof LegacyPasswordHasherInterface) {
-            $salt = null;
+            $user->setSalt(null);
+            $hashedPassword = $hasher->hash($plainPassword);
         } else {
             $salt = rtrim(str_replace('+', '.', base64_encode(random_bytes(32))), '=');
+            $user->setSalt($salt);
+
+            $hashedPassword = $hasher->hash($plainPassword, $salt);
         }
 
-        $user->setSalt($salt);
-
-        $hashedPassword = $hasher->hash($plainPassword, $salt);
         $user->setPassword($hashedPassword);
         $user->eraseCredentials();
     }

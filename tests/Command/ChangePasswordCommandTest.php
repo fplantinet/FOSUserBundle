@@ -76,10 +76,7 @@ class ChangePasswordCommandTest extends TestCase
         return new CommandTester($application->find('fos:user:change-password'));
     }
 
-    /**
-     * @return mixed
-     */
-    private function getManipulator($username, $password)
+    private function getManipulator(string $username, string $password): UserManipulator
     {
         $manipulator = $this->getMockBuilder('FOS\UserBundle\Util\UserManipulator')
             ->disableOriginalConstructor()

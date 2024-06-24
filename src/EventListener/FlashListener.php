@@ -66,6 +66,8 @@ class FlashListener implements EventSubscriberInterface
 
     /**
      * @param string $eventName
+     *
+     * @return void
      */
     public function addSuccessFlash(Event $event, $eventName)
     {
@@ -90,8 +92,8 @@ class FlashListener implements EventSubscriberInterface
     /**
      * @param string $message
      */
-    private function trans($message, array $params = []): string
+    private function trans($message): string
     {
-        return $this->translator->trans($message, $params, 'FOSUserBundle');
+        return $this->translator->trans($message, [], 'FOSUserBundle');
     }
 }

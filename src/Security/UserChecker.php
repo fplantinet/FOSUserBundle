@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Security;
 
+use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\Security\Core\Exception\DisabledException;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
@@ -27,7 +28,7 @@ class UserChecker implements UserCheckerInterface
      */
     public function checkPreAuth(BaseUserInterface $user)
     {
-        if (!$user->isEnabled()) {
+        if ($user instanceof UserInterface && !$user->isEnabled()) {
             $ex = new DisabledException('User account is disabled.');
             $ex->setUser($user);
             throw $ex;

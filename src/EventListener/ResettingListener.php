@@ -54,6 +54,9 @@ class ResettingListener implements EventSubscriberInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function onResettingResetInitialize(GetResponseUserEvent $event)
     {
         if (!$event->getUser()->isPasswordRequestNonExpired($this->tokenTtl)) {
@@ -61,9 +64,12 @@ class ResettingListener implements EventSubscriberInterface
         }
     }
 
+    /**
+     * @return void
+     */
     public function onResettingResetSuccess(FormEvent $event)
     {
-        /** @var $user \FOS\UserBundle\Model\UserInterface */
+        /** @var \FOS\UserBundle\Model\UserInterface $user */
         $user = $event->getForm()->getData();
 
         $user->setConfirmationToken(null);

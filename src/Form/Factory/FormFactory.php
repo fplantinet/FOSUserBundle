@@ -32,7 +32,7 @@ class FormFactory implements FactoryInterface
     private $type;
 
     /**
-     * @var array
+     * @var string[]|null
      */
     private $validationGroups;
 
@@ -52,6 +52,8 @@ class FormFactory implements FactoryInterface
     }
 
     /**
+     * @param array<string, mixed> $options
+     *
      * @return FormInterface
      */
     public function createForm(array $options = [])

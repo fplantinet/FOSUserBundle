@@ -51,6 +51,8 @@ class UserListener implements EventSubscriber
 
     /**
      * Pre persist listener based on doctrine common.
+     *
+     * @param LifecycleEventArgs<ObjectManager> $args
      */
     public function prePersist(LifecycleEventArgs $args): void
     {
@@ -62,6 +64,8 @@ class UserListener implements EventSubscriber
 
     /**
      * Pre update listener based on doctrine common.
+     *
+     * @param LifecycleEventArgs<ObjectManager> $args
      */
     public function preUpdate(LifecycleEventArgs $args): void
     {
@@ -86,15 +90,15 @@ class UserListener implements EventSubscriber
      */
     private function recomputeChangeSet(ObjectManager $om, UserInterface $user): void
     {
-        $meta = $om->getClassMetadata(get_class($user));
-
         if ($om instanceof EntityManager) {
+            $meta = $om->getClassMetadata(get_class($user));
             $om->getUnitOfWork()->recomputeSingleEntityChangeSet($meta, $user);
 
             return;
         }
 
         if ($om instanceof DocumentManager) {
+            $meta = $om->getClassMetadata(get_class($user));
             $om->getUnitOfWork()->recomputeSingleDocumentChangeSet($meta, $user);
         }
     }
