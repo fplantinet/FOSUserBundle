@@ -100,14 +100,14 @@ class FOSUserExtensionTest extends TestCase
         $loader->load([$config], $this->configuration);
         $this->assertNotHasDefinition('fos_user.registration.form.factory');
 
-        $mailer = $this->configuration->getDefinition('fos_user.mailer.twig_swift');
+        $mailer = $this->configuration->getDefinition('fos_user.mailer.twig_symfony');
         $parameters = $this->configuration->getParameterBag()->resolveValue(
             $mailer->getArgument(3)
         );
         $this->assertSame(
             [
-                'confirmation' => ['no-registration@acme.com' => 'Acme Ltd'],
-                'resetting' => ['admin@acme.org' => 'Acme Corp'],
+                'confirmation' => ['address' => 'no-registration@acme.com', 'sender_name' => 'Acme Ltd'],
+                'resetting' => ['address' => 'admin@acme.org', 'sender_name' => 'Acme Corp'],
             ],
             $parameters['from_email']
         );
@@ -122,14 +122,14 @@ class FOSUserExtensionTest extends TestCase
         $loader->load([$config], $this->configuration);
         $this->assertNotHasDefinition('fos_user.resetting.form.factory');
 
-        $mailer = $this->configuration->getDefinition('fos_user.mailer.twig_swift');
+        $mailer = $this->configuration->getDefinition('fos_user.mailer.twig_symfony');
         $parameters = $this->configuration->getParameterBag()->resolveValue(
             $mailer->getArgument(3)
         );
         $this->assertSame(
             [
-                'confirmation' => ['admin@acme.org' => 'Acme Corp'],
-                'resetting' => ['no-resetting@acme.com' => 'Acme Ltd'],
+                'confirmation' => ['address' => 'admin@acme.org', 'sender_name' => 'Acme Corp'],
+                'resetting' => ['address' => 'no-resetting@acme.com', 'sender_name' => 'Acme Ltd'],
             ],
             $parameters['from_email']
         );
@@ -166,8 +166,8 @@ class FOSUserExtensionTest extends TestCase
         $config = array_merge($config, $testConfig);
         $loader->load([$config], $this->configuration);
 
-        $this->assertParameter($registration, 'fos_user.registration.confirmation.from_email');
-        $this->assertParameter($resetting, 'fos_user.resetting.email.from_email');
+        $this->assertParameter($registration, 'fos_user.registration.confirmation.from_address');
+        $this->assertParameter($resetting, 'fos_user.resetting.email.from_address');
     }
 
     public function providerEmailsDisabledFeature()
@@ -190,13 +190,13 @@ class FOSUserExtensionTest extends TestCase
             ],
         ];
 
-        $default = ['admin@acme.org' => 'Acme Corp'];
-        $overriden = ['ltd@acme.com' => 'Acme Ltd'];
+        $default = ['address' => 'admin@acme.org', 'sender_name' => 'Acme Corp'];
+        $overriden = ['address' => 'ltd@acme.com', 'sender_name' => 'Acme Ltd'];
 
         return [
-            [$configBothFeaturesDisabled, ['no-registration@acme.com' => 'Acme Ltd'], ['no-resetting@acme.com' => 'Acme Ltd']],
-            [$configResettingDisabled, $default, ['no-resetting@acme.com' => 'Acme Ltd']],
-            [$configRegistrationDisabled, ['no-registration@acme.com' => 'Acme Ltd'], $default],
+            [$configBothFeaturesDisabled, ['address' => 'no-registration@acme.com', 'sender_name' => 'Acme Ltd'], ['address' => 'no-resetting@acme.com', 'sender_name' => 'Acme Ltd']],
+            [$configResettingDisabled, $default, ['address' => 'no-resetting@acme.com', 'sender_name' => 'Acme Ltd']],
+            [$configRegistrationDisabled, ['address' => 'no-registration@acme.com', 'sender_name' => 'Acme Ltd'], $default],
             [$configOverridenRegistrationEmail, $overriden, $default],
             [$configOverridenResettingEmail, $default, $overriden],
         ];
@@ -289,10 +289,10 @@ class FOSUserExtensionTest extends TestCase
         $this->createEmptyConfiguration();
 
         $this->assertParameter(false, 'fos_user.registration.confirmation.enabled');
-        $this->assertParameter(['admin@acme.org' => 'Acme Corp'], 'fos_user.registration.confirmation.from_email');
+        $this->assertParameter(['address' => 'admin@acme.org', 'sender_name' => 'Acme Corp'], 'fos_user.registration.confirmation.from_address');
         $this->assertParameter('@FOSUser/Registration/email.txt.twig', 'fos_user.registration.confirmation.template');
         $this->assertParameter('@FOSUser/Resetting/email.txt.twig', 'fos_user.resetting.email.template');
-        $this->assertParameter(['admin@acme.org' => 'Acme Corp'], 'fos_user.resetting.email.from_email');
+        $this->assertParameter(['address' => 'admin@acme.org', 'sender_name' => 'Acme Corp'], 'fos_user.resetting.email.from_address');
         $this->assertParameter(86400, 'fos_user.resetting.token_ttl');
     }
 
@@ -301,10 +301,10 @@ class FOSUserExtensionTest extends TestCase
         $this->createFullConfiguration();
 
         $this->assertParameter(true, 'fos_user.registration.confirmation.enabled');
-        $this->assertParameter(['register@acme.org' => 'Acme Corp'], 'fos_user.registration.confirmation.from_email');
+        $this->assertParameter(['address' => 'register@acme.org', 'sender_name' => 'Acme Corp'], 'fos_user.registration.confirmation.from_address');
         $this->assertParameter('AcmeMyBundle:Registration:mail.txt.twig', 'fos_user.registration.confirmation.template');
         $this->assertParameter('AcmeMyBundle:Resetting:mail.txt.twig', 'fos_user.resetting.email.template');
-        $this->assertParameter(['reset@acme.org' => 'Acme Corp'], 'fos_user.resetting.email.from_email');
+        $this->assertParameter(['address' => 'reset@acme.org', 'sender_name' => 'Acme Corp'], 'fos_user.resetting.email.from_address');
         $this->assertParameter(7200, 'fos_user.resetting.retry_ttl');
     }
 
