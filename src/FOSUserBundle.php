@@ -14,7 +14,6 @@ namespace FOS\UserBundle;
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
 use Doctrine\Bundle\MongoDBBundle\DependencyInjection\Compiler\DoctrineMongoDBMappingsPass;
 use FOS\UserBundle\DependencyInjection\Compiler\CheckForSessionPass;
-use FOS\UserBundle\DependencyInjection\Compiler\CheckForSwiftMailerPass;
 use FOS\UserBundle\DependencyInjection\Compiler\InjectRememberMeServicesPass;
 use FOS\UserBundle\DependencyInjection\Compiler\InjectUserCheckerPass;
 use FOS\UserBundle\DependencyInjection\Compiler\ValidationPass;
@@ -34,7 +33,6 @@ final class FOSUserBundle extends Bundle
         $container->addCompilerPass(new InjectUserCheckerPass());
         $container->addCompilerPass(new InjectRememberMeServicesPass());
         $container->addCompilerPass(new CheckForSessionPass());
-        $container->addCompilerPass(new CheckForSwiftMailerPass());
 
         $this->addRegisterMappingsPass($container);
     }

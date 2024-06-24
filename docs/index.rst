@@ -370,7 +370,7 @@ logging in, creating users, etc.
 .. note::
 
     In order to use the built-in email functionality (confirmation of the account,
-    resetting of the password), you must activate and configure the SwiftmailerBundle.
+    resetting of the password), you must activate and configure the mailer.
 
 Step 7: Update your database schema
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
