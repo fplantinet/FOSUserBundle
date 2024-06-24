@@ -11,7 +11,6 @@
 
 namespace FOS\UserBundle\Controller;
 
-use FOS\UserBundle\CompatibilityUtil;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
@@ -43,7 +42,7 @@ final class RegistrationController extends AbstractController
 
     public function __construct(EventDispatcherInterface $eventDispatcher, FactoryInterface $formFactory, UserManagerInterface $userManager, TokenStorageInterface $tokenStorage)
     {
-        $this->eventDispatcher = CompatibilityUtil::upgradeEventDispatcher($eventDispatcher);
+        $this->eventDispatcher = $eventDispatcher;
         $this->formFactory = $formFactory;
         $this->userManager = $userManager;
         $this->tokenStorage = $tokenStorage;
@@ -178,9 +177,6 @@ final class RegistrationController extends AbstractController
 
         if (method_exists($token, 'getFirewallName')) {
             $firewallName = $token->getFirewallName();
-        } elseif (method_exists($token, 'getProviderKey')) {
-            // BC with Symfony 5.x
-            $firewallName = $token->getProviderKey();
         } else {
             return null;
         }

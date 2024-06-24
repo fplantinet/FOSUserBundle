@@ -26,9 +26,6 @@ use Symfony\Component\Console\Question\Question;
 #[AsCommand(name: 'fos:user:change-password', description: 'Change the password of a user.')]
 final class ChangePasswordCommand extends Command
 {
-    // BC with Symfony <5.3
-    protected static $defaultName = 'fos:user:change-password';
-
     private $userManipulator;
 
     public function __construct(UserManipulator $userManipulator)
@@ -41,9 +38,6 @@ final class ChangePasswordCommand extends Command
     protected function configure(): void
     {
         $this
-            // BC with Symfony <5.3
-            ->setName('fos:user:change-password')
-            ->setDescription('Change the password of a user.')
             ->setDefinition([
                 new InputArgument('username', InputArgument::REQUIRED, 'The username'),
                 new InputArgument('password', InputArgument::REQUIRED, 'The password'),

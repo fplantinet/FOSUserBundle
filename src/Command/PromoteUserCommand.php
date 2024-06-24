@@ -26,17 +26,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand(name: 'fos:user:promote', description: 'Promotes a user by adding a role')]
 final class PromoteUserCommand extends RoleCommand
 {
-    // BC with Symfony <5.3
-    protected static $defaultName = 'fos:user:promote';
-
     protected function configure(): void
     {
         parent::configure();
 
         $this
-            // BC with Symfony <5.3
-            ->setName('fos:user:promote')
-            ->setDescription('Promotes a user by adding a role')
             ->setHelp(<<<'EOT'
 The <info>fos:user:promote</info> command promotes a user by adding a role
 

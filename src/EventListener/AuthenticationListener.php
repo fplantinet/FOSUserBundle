@@ -11,7 +11,6 @@
 
 namespace FOS\UserBundle\EventListener;
 
-use FOS\UserBundle\CompatibilityUtil;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\UserEvent;
 use FOS\UserBundle\FOSUserEvents;
@@ -62,7 +61,6 @@ final class AuthenticationListener implements EventSubscriberInterface
      */
     public function authenticate(FilterUserResponseEvent $event, $eventName, EventDispatcherInterface $eventDispatcher)
     {
-        $eventDispatcher = CompatibilityUtil::upgradeEventDispatcher($eventDispatcher);
         try {
             $this->loginManager->logInUser($this->firewallName, $event->getUser(), $event->getResponse());
 
