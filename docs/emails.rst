@@ -38,11 +38,10 @@ a form to enter in a new password.
 Default Mailer Implementations
 ------------------------------
 
-The bundle comes with 3 mailer implementations. They are listed below
+The bundle comes with 2 mailer implementations. They are listed below
 by service id:
 
 - ``fos_user.mailer.twig_symfony`` uses symfony/mailer to send emails and Twig blocks to render the message.
-- ``fos_user.mailer.twig_swift`` uses Swiftmailer to send emails and Twig blocks to render the message.
 - ``fos_user.mailer.noop`` is a mailer implementation which performs no operation, so no emails are sent.
 
 .. note::
@@ -215,7 +214,7 @@ An example is listed below.
 
 To see an example of a working implementation of the ``MailerInterface``
 see the `ZetaMailer`_ class of the `ZetaWebmailBundle`_. This implementation
-uses the Zeta Components Mail to send emails instead of Swiftmailer.
+uses the Zeta Components Mail to send emails instead of the mailer component.
 
 .. _ZetaMailer: https://github.com/simplethings/ZetaWebmailBundle/blob/master/UserBundle/ZetaMailer.php
 .. _ZetaWebmailBundle: https://github.com/simplethings/ZetaWebmailBundle
