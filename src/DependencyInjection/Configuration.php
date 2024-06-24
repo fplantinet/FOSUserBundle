@@ -33,7 +33,7 @@ final class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder('fos_user');
         $rootNode = $treeBuilder->getRootNode();
 
-        $supportedDrivers = ['orm', 'mongodb', 'couchdb', 'custom'];
+        $supportedDrivers = ['orm', 'mongodb', 'custom'];
 
         $rootNode
             ->children()
@@ -41,14 +41,6 @@ final class Configuration implements ConfigurationInterface
                     ->validate()
                         ->ifNotInArray($supportedDrivers)
                         ->thenInvalid('The driver %s is not supported. Please choose one of '.json_encode($supportedDrivers))
-                    ->end()
-                    ->validate()
-                        ->ifInArray(['couchdb'])
-                        ->then(function ($v) {
-                            trigger_deprecation('friendsofsymfony/user-bundle', '3.3.0', 'The CouchDB ODM integration is deprecated because the CouchDB ODM itself is unmaintained.');
-
-                            return $v;
-                        })
                     ->end()
                     ->cannotBeOverwritten()
                     ->isRequired()
