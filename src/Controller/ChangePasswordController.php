@@ -31,10 +31,8 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
- *
- * @final
  */
-class ChangePasswordController extends AbstractController
+final class ChangePasswordController extends AbstractController
 {
     private $eventDispatcher;
     private $formFactory;

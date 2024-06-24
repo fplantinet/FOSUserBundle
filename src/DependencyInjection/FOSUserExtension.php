@@ -16,19 +16,17 @@ use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * @internal
- *
- * @final
  */
-class FOSUserExtension extends Extension
+final class FOSUserExtension extends Extension
 {
     /**
-     * @var array<string, array{registry: string, tag: string, listener_class?: string}>
+     * @var array<string, array{registry: string, tag: string}>
      */
     private static $doctrineDrivers = [
         'orm' => [
@@ -38,11 +36,6 @@ class FOSUserExtension extends Extension
         'mongodb' => [
             'registry' => 'doctrine_mongodb',
             'tag' => 'doctrine_mongodb.odm.event_listener',
-        ],
-        'couchdb' => [
-            'registry' => 'doctrine_couchdb',
-            'tag' => 'doctrine_couchdb.event_listener',
-            'listener_class' => 'FOS\UserBundle\Doctrine\CouchDB\UserListener',
         ],
     ];
 
@@ -99,9 +92,6 @@ class FOSUserExtension extends Extension
             $listenerDefinition = $container->getDefinition('fos_user.user_listener');
             $listenerDefinition->addTag(self::$doctrineDrivers[$config['db_driver']]['tag'], ['event' => 'prePersist']);
             $listenerDefinition->addTag(self::$doctrineDrivers[$config['db_driver']]['tag'], ['event' => 'preUpdate']);
-            if (isset(self::$doctrineDrivers[$config['db_driver']]['listener_class'])) {
-                $listenerDefinition->setClass(self::$doctrineDrivers[$config['db_driver']]['listener_class']);
-            }
         }
 
         if ($config['use_username_form_type']) {

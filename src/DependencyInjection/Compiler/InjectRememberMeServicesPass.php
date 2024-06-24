@@ -21,10 +21,8 @@ use Symfony\Component\DependencyInjection\Reference;
  * @author Vasily Khayrulin <sirianru@gmail.com>
  *
  * @internal
- *
- * @final
  */
-class InjectRememberMeServicesPass implements CompilerPassInterface
+final class InjectRememberMeServicesPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {

@@ -20,11 +20,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @author Lenar Lõhmus <lenar@city.ee>
  *
  * @internal
- *
- * @final
  */
 #[AsCommand(name: 'fos:user:demote', description: 'Demote a user by removing a role')]
-class DemoteUserCommand extends RoleCommand
+final class DemoteUserCommand extends RoleCommand
 {
     // BC with Symfony <5.3
     protected static $defaultName = 'fos:user:demote';

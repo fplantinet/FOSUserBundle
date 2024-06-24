@@ -32,10 +32,8 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
- *
- * @final
  */
-class ResettingController extends AbstractController
+final class ResettingController extends AbstractController
 {
     private $eventDispatcher;
     private $formFactory;

@@ -373,28 +373,6 @@ class FOSUserExtensionTest extends TestCase
         ];
     }
 
-    /**
-     * @group legacy
-     */
-    public function testUserManagerSetFactoryCouchdb()
-    {
-        $this->configuration = new ContainerBuilder();
-        $loader = new FOSUserExtension();
-        $config = $this->getEmptyConfig();
-        $config['db_driver'] = 'couchdb';
-        $loader->load([$config], $this->configuration);
-
-        $definition = $this->configuration->getDefinition('fos_user.object_manager');
-
-        $this->assertAlias('doctrine_couchdb', 'fos_user.doctrine_registry');
-
-        $factory = $definition->getFactory();
-
-        $this->assertInstanceOf('Symfony\Component\DependencyInjection\Reference', $factory[0]);
-        $this->assertSame('fos_user.doctrine_registry', (string) $factory[0]);
-        $this->assertSame('getManager', $factory[1]);
-    }
-
     protected function createEmptyConfiguration()
     {
         $this->configuration = new ContainerBuilder();

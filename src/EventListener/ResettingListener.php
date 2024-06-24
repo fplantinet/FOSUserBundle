@@ -20,10 +20,8 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @internal
- *
- * @final
  */
-class ResettingListener implements EventSubscriberInterface
+final class ResettingListener implements EventSubscriberInterface
 {
     /**
      * @var UrlGeneratorInterface

@@ -22,10 +22,8 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 /**
  * @internal
- *
- * @final
  */
-class AuthenticationListener implements EventSubscriberInterface
+final class AuthenticationListener implements EventSubscriberInterface
 {
     /**
      * @var LoginManagerInterface

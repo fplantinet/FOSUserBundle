@@ -27,10 +27,8 @@ use FOS\UserBundle\Util\PasswordUpdaterInterface;
  * @author David Buchmann <mail@davidbu.ch>
  *
  * @internal
- *
- * @final
  */
-class UserListener implements EventSubscriber
+final class UserListener implements EventSubscriber
 {
     private $passwordUpdater;
     private $canonicalFieldsUpdater;

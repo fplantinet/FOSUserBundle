@@ -216,44 +216,6 @@ this to start:
         }
     }
 
-c) CouchDB User class
-.....................
-
-.. note::
-    Support for the CouchDB ODM is deprecated as the Doctrine CouchDB ODM is unmaintained.
-
-If you're persisting your users via the Doctrine CouchDB ODM, then your ``User``
-class should live in the ``CouchDocument`` namespace of your bundle and look
-like this to start:
-
-.. code-block:: php
-
-    <?php
-    // src/AppBundle/CouchDocument/User.php
-
-    namespace AppBundle\CouchDocument;
-
-    use FOS\UserBundle\Model\User as BaseUser;
-    use Doctrine\ODM\CouchDB\Mapping\Annotations as CouchDB;
-
-    /**
-     * @CouchDB\Document
-     */
-    class User extends BaseUser
-    {
-        /**
-         * @CouchDB\Id
-         */
-        protected $id;
-
-        public function __construct()
-        {
-            parent::__construct();
-            // your own logic
-        }
-    }
-
-
 Step 4: Configure your application's security.yml
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -351,7 +313,7 @@ of datastore you are using.
 
         # app/config/config.yml
         fos_user:
-            db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'custom'
+            db_driver: orm # other valid values are 'mongodb' and 'custom'
             firewall_name: main
             user_class: AppBundle\Entity\User
             from_email:
@@ -362,7 +324,7 @@ of datastore you are using.
 
         <!-- app/config/config.xml -->
 
-        <!-- other valid 'db-driver' values are 'mongodb', 'couchdb' and 'custom' -->
+        <!-- other valid 'db-driver' values are 'mongodb' and 'custom' -->
         <fos_user:config
             db-driver="orm"
             firewall-name="main"
@@ -371,7 +333,7 @@ of datastore you are using.
 
 Only four configuration's nodes are required to use the bundle:
 
-* The type of datastore you are using (``orm``, ``mongodb``, ``couchdb`` or ``custom```).
+* The type of datastore you are using (``orm``, ``mongodb`` or ``custom```).
 * The firewall name which you configured in Step 4.
 * The fully qualified class name (FQCN) of the ``User`` class which you created in Step 3.
 * The default email address to use when the bundle send a registration confirmation to the user.
