@@ -55,8 +55,8 @@ jobs:
 
             - name: Install dependencies
               env:
-                SYMFONY_REQUIRE: ${{ matrix.symfony-version }}
-              run: composer install
+                SYMFONY_REQUIRE: ${{ matrix.symfony-versions }}
+              run: composer update
 
             - name: Install PHPUnit
               run: ./vendor/bin/simple-phpunit install
