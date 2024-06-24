@@ -5,6 +5,7 @@ Changelog
 
 * Added a mailer implementation based on symfony/mailer and Twig
 * Added tentative return types in most methods
+* Deprecated the CouchDB ODM integration as the ODM is unmaintained
 
 ### 3.2.1 (2023-07-06)
 
