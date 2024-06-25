@@ -16,6 +16,7 @@ use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -75,6 +76,14 @@ class FOSUserExtension extends Extension
 
         foreach (['validator', 'security', 'util', 'mailer', 'listeners', 'commands'] as $basename) {
             $loader->load(sprintf('%s.xml', $basename));
+        }
+
+        $twigSwiftMailerDefinition = $container->getDefinition('fos_user.mailer.twig_swift');
+        if (method_exists(Definition::class, 'getDeprecation')) {
+            $twigSwiftMailerDefinition->setDeprecated('friendsofsymfony/user-bundle', '3.4.0', 'The "%service_id%" service is deprecated. Use a different mailer implementation instead.');
+        } else {
+            // BC for Symfony <5.1
+            $twigSwiftMailerDefinition->setDeprecated('The "fos_user.mailer.twig_swift" service is deprecated. Use a different mailer implementation instead.');
         }
 
         if (!$config['use_authentication_listener']) {

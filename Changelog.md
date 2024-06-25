@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### 3.4.0 (2024-06-25)
+
+* Deprecated the TwigSwiftMailer implementation
+
 ### 3.3.0 (2024-06-24)
 
 * Added a mailer implementation based on symfony/mailer and Twig

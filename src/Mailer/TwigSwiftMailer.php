@@ -17,6 +17,8 @@ use Twig\Environment;
 
 /**
  * @author Christophe Coevoet <stof@notk.org>
+ *
+ * @deprecated
  */
 class TwigSwiftMailer implements MailerInterface
 {
