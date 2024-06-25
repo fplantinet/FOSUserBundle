@@ -53,10 +53,8 @@ class FormFactory implements FactoryInterface
 
     /**
      * @param array<string, mixed> $options
-     *
-     * @return FormInterface
      */
-    public function createForm(array $options = [])
+    public function createForm(array $options = []): FormInterface
     {
         $options = array_merge(['validation_groups' => $this->validationGroups], $options);
 

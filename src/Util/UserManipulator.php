@@ -87,10 +87,8 @@ class UserManipulator
      * Activates the given user.
      *
      * @param string $username
-     *
-     * @return void
      */
-    public function activate($username)
+    public function activate($username): void
     {
         $user = $this->findUserByUsernameOrThrowException($username);
         $user->setEnabled(true);
@@ -104,10 +102,8 @@ class UserManipulator
      * Deactivates the given user.
      *
      * @param string $username
-     *
-     * @return void
      */
-    public function deactivate($username)
+    public function deactivate($username): void
     {
         $user = $this->findUserByUsernameOrThrowException($username);
         $user->setEnabled(false);
@@ -122,10 +118,8 @@ class UserManipulator
      *
      * @param string $username
      * @param string $password
-     *
-     * @return void
      */
-    public function changePassword($username, $password)
+    public function changePassword($username, $password): void
     {
         $user = $this->findUserByUsernameOrThrowException($username);
         $user->setPlainPassword($password);
@@ -139,10 +133,8 @@ class UserManipulator
      * Promotes the given user.
      *
      * @param string $username
-     *
-     * @return void
      */
-    public function promote($username)
+    public function promote($username): void
     {
         $user = $this->findUserByUsernameOrThrowException($username);
         $user->setSuperAdmin(true);
@@ -156,10 +148,8 @@ class UserManipulator
      * Demotes the given user.
      *
      * @param string $username
-     *
-     * @return void
      */
-    public function demote($username)
+    public function demote($username): void
     {
         $user = $this->findUserByUsernameOrThrowException($username);
         $user->setSuperAdmin(false);

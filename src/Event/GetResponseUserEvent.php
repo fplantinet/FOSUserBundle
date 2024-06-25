@@ -20,10 +20,7 @@ final class GetResponseUserEvent extends UserEvent
      */
     private $response;
 
-    /**
-     * @return void
-     */
-    public function setResponse(Response $response)
+    public function setResponse(Response $response): void
     {
         $this->response = $response;
     }

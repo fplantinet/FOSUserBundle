@@ -56,10 +56,8 @@ final class AuthenticationListener implements EventSubscriberInterface
 
     /**
      * @param string $eventName
-     *
-     * @return void
      */
-    public function authenticate(FilterUserResponseEvent $event, $eventName, EventDispatcherInterface $eventDispatcher)
+    public function authenticate(FilterUserResponseEvent $event, $eventName, EventDispatcherInterface $eventDispatcher): void
     {
         try {
             $this->loginManager->logInUser($this->firewallName, $event->getUser(), $event->getResponse());

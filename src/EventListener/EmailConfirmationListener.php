@@ -45,10 +45,7 @@ final class EmailConfirmationListener implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @return void
-     */
-    public function onRegistrationSuccess(FormEvent $event)
+    public function onRegistrationSuccess(FormEvent $event): void
     {
         /** @var \FOS\UserBundle\Model\UserInterface $user */
         $user = $event->getForm()->getData();

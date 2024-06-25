@@ -98,10 +98,7 @@ class UserTest extends TestCase
         $this->assertFalse($user->isEqualTo($user4));
     }
 
-    /**
-     * @return User
-     */
-    protected function getUser()
+    protected function getUser(): User
     {
         return $this->getMockForAbstractClass('FOS\UserBundle\Model\User');
     }

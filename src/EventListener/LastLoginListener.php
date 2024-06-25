@@ -45,10 +45,7 @@ final class LastLoginListener implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @return void
-     */
-    public function onImplicitLogin(UserEvent $event)
+    public function onImplicitLogin(UserEvent $event): void
     {
         $user = $event->getUser();
 
@@ -56,10 +53,7 @@ final class LastLoginListener implements EventSubscriberInterface
         $this->userManager->updateUser($user);
     }
 
-    /**
-     * @return void
-     */
-    public function onSecurityInteractiveLogin(InteractiveLoginEvent $event)
+    public function onSecurityInteractiveLogin(InteractiveLoginEvent $event): void
     {
         $user = $event->getAuthenticationToken()->getUser();
 

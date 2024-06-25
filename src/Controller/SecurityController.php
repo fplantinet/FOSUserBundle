@@ -49,18 +49,12 @@ final class SecurityController extends AbstractController
         ]);
     }
 
-    /**
-     * @return never
-     */
-    public function checkAction()
+    public function checkAction(): never
     {
         throw new \RuntimeException('You must configure the check path to be handled by the firewall using form_login in your security firewall configuration.');
     }
 
-    /**
-     * @return never
-     */
-    public function logoutAction()
+    public function logoutAction(): never
     {
         throw new \RuntimeException('You must activate the logout in your security firewall configuration.');
     }

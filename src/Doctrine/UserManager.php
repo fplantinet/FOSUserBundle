@@ -43,21 +43,16 @@ class UserManager extends BaseUserManager
         $this->class = $class;
     }
 
-    /**
-     * @return void
-     */
-    public function deleteUser(UserInterface $user)
+    public function deleteUser(UserInterface $user): void
     {
         $this->objectManager->remove($user);
         $this->objectManager->flush();
     }
 
     /**
-     * @return string
-     *
      * @phpstan-return class-string<UserInterface>
      */
-    public function getClass()
+    public function getClass(): string
     {
         if (false !== strpos($this->class, ':')) {
             $metadata = $this->objectManager->getClassMetadata($this->class);
@@ -67,10 +62,7 @@ class UserManager extends BaseUserManager
         return $this->class;
     }
 
-    /**
-     * @return UserInterface|null
-     */
-    public function findUserBy(array $criteria)
+    public function findUserBy(array $criteria): ?UserInterface
     {
         return $this->getRepository()->findOneBy($criteria);
     }
@@ -78,23 +70,17 @@ class UserManager extends BaseUserManager
     /**
      * @return iterable<UserInterface>
      */
-    public function findUsers()
+    public function findUsers(): iterable
     {
         return $this->getRepository()->findAll();
     }
 
-    /**
-     * @return void
-     */
-    public function reloadUser(UserInterface $user)
+    public function reloadUser(UserInterface $user): void
     {
         $this->objectManager->refresh($user);
     }
 
-    /**
-     * @return void
-     */
-    public function updateUser(UserInterface $user, $andFlush = true)
+    public function updateUser(UserInterface $user, $andFlush = true): void
     {
         $this->updateCanonicalFields($user);
         $this->updatePassword($user);
@@ -108,7 +94,7 @@ class UserManager extends BaseUserManager
     /**
      * @return ObjectRepository<UserInterface>
      */
-    protected function getRepository()
+    protected function getRepository(): ObjectRepository
     {
         return $this->objectManager->getRepository($this->getClass());
     }

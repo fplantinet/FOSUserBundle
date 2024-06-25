@@ -58,10 +58,7 @@ class ChangePasswordCommandTest extends TestCase
         $this->assertMatchesRegularExpression('/Changed password for user user/', $commandTester->getDisplay());
     }
 
-    /**
-     * @return CommandTester
-     */
-    private function createCommandTester(UserManipulator $userManipulator, ?Application $application = null)
+    private function createCommandTester(UserManipulator $userManipulator, ?Application $application = null): CommandTester
     {
         if (null === $application) {
             $application = new Application();
