@@ -16,7 +16,6 @@ use FOS\UserBundle\Security\EmailProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 
 class EmailProviderTest extends TestCase
@@ -45,23 +44,19 @@ class EmailProviderTest extends TestCase
             ->with('foobar')
             ->will($this->returnValue($user));
 
-        $this->assertSame($user, $this->userProvider->loadUserByUsername('foobar'));
+        $this->assertSame($user, $this->userProvider->loadUserByIdentifier('foobar'));
     }
 
     public function testLoadUserByInvalidUsername()
     {
-        if (class_exists(UserNotFoundException::class)) {
-            $this->expectException(UserNotFoundException::class);
-        } else {
-            $this->expectException(UsernameNotFoundException::class);
-        }
+        $this->expectException(UserNotFoundException::class);
 
         $this->userManager->expects($this->once())
             ->method('findUserByEmail')
             ->with('foobar')
             ->will($this->returnValue(null));
 
-        $this->userProvider->loadUserByUsername('foobar');
+        $this->userProvider->loadUserByIdentifier('foobar');
     }
 
     public function testRefreshUserBy()
@@ -89,11 +84,7 @@ class EmailProviderTest extends TestCase
 
     public function testRefreshDeleted()
     {
-        if (class_exists(UserNotFoundException::class)) {
-            $this->expectException(UserNotFoundException::class);
-        } else {
-            $this->expectException(UsernameNotFoundException::class);
-        }
+        $this->expectException(UserNotFoundException::class);
 
         $user = $this->getMockForAbstractClass('FOS\UserBundle\Model\User');
         $this->userManager->expects($this->once())
