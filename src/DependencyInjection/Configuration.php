@@ -223,7 +223,17 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('service')
                     ->addDefaultsIfNotSet()
                         ->children()
-                            ->scalarNode('mailer')->defaultNull()->end()
+                            ->scalarNode('mailer')
+                                ->defaultNull()
+                                ->validate()
+                                    ->ifInArray(['fos_user.mailer.twig_swift'])
+                                    ->then(function ($v) {
+                                        trigger_deprecation('friendsofsymfony/user-bundle', '3.4.0', 'The twig_swift mailer is deprecated because Swiftmailer itself is unmaintained.');
+
+                                        return $v;
+                                    })
+                                ->end()
+                            ->end()
                             ->scalarNode('email_canonicalizer')->defaultValue('fos_user.util.canonicalizer.default')->end()
                             ->scalarNode('token_generator')->defaultValue('fos_user.util.token_generator.default')->end()
                             ->scalarNode('username_canonicalizer')->defaultValue('fos_user.util.canonicalizer.default')->end()
