@@ -31,10 +31,7 @@ abstract class UserManager implements UserManagerInterface
         $this->canonicalFieldsUpdater = $canonicalFieldsUpdater;
     }
 
-    /**
-     * @return UserInterface
-     */
-    public function createUser()
+    public function createUser(): UserInterface
     {
         $class = $this->getClass();
         $user = new $class();
@@ -42,26 +39,17 @@ abstract class UserManager implements UserManagerInterface
         return $user;
     }
 
-    /**
-     * @return UserInterface|null
-     */
-    public function findUserByEmail($email)
+    public function findUserByEmail($email): ?UserInterface
     {
         return $this->findUserBy(['emailCanonical' => $this->canonicalFieldsUpdater->canonicalizeEmail($email)]);
     }
 
-    /**
-     * @return UserInterface|null
-     */
-    public function findUserByUsername($username)
+    public function findUserByUsername($username): ?UserInterface
     {
         return $this->findUserBy(['usernameCanonical' => $this->canonicalFieldsUpdater->canonicalizeUsername($username)]);
     }
 
-    /**
-     * @return UserInterface|null
-     */
-    public function findUserByUsernameOrEmail($usernameOrEmail)
+    public function findUserByUsernameOrEmail($usernameOrEmail): ?UserInterface
     {
         if (preg_match('/^.+\@\S+\.\S+$/', $usernameOrEmail)) {
             $user = $this->findUserByEmail($usernameOrEmail);
@@ -73,42 +61,27 @@ abstract class UserManager implements UserManagerInterface
         return $this->findUserByUsername($usernameOrEmail);
     }
 
-    /**
-     * @return UserInterface|null
-     */
-    public function findUserByConfirmationToken($token)
+    public function findUserByConfirmationToken($token): ?UserInterface
     {
         return $this->findUserBy(['confirmationToken' => $token]);
     }
 
-    /**
-     * @return void
-     */
-    public function updateCanonicalFields(UserInterface $user)
+    public function updateCanonicalFields(UserInterface $user): void
     {
         $this->canonicalFieldsUpdater->updateCanonicalFields($user);
     }
 
-    /**
-     * @return void
-     */
-    public function updatePassword(UserInterface $user)
+    public function updatePassword(UserInterface $user): void
     {
         $this->passwordUpdater->hashPassword($user);
     }
 
-    /**
-     * @return PasswordUpdaterInterface
-     */
-    protected function getPasswordUpdater()
+    protected function getPasswordUpdater(): PasswordUpdaterInterface
     {
         return $this->passwordUpdater;
     }
 
-    /**
-     * @return CanonicalFieldsUpdater
-     */
-    protected function getCanonicalFieldsUpdater()
+    protected function getCanonicalFieldsUpdater(): CanonicalFieldsUpdater
     {
         return $this->canonicalFieldsUpdater;
     }

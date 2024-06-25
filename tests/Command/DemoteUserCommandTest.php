@@ -58,10 +58,7 @@ class DemoteUserCommandTest extends TestCase
         $this->assertMatchesRegularExpression('/Role "role" has been removed from user "user"/', $commandTester->getDisplay());
     }
 
-    /**
-     * @return CommandTester
-     */
-    private function createCommandTester(UserManipulator $manipulator, ?Application $application = null)
+    private function createCommandTester(UserManipulator $manipulator, ?Application $application = null): CommandTester
     {
         if (null === $application) {
             $application = new Application();

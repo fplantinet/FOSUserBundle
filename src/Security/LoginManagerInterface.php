@@ -18,8 +18,6 @@ interface LoginManagerInterface
 {
     /**
      * @param string $firewallName
-     *
-     * @return void
      */
-    public function logInUser($firewallName, UserInterface $user, ?Response $response = null);
+    public function logInUser($firewallName, UserInterface $user, ?Response $response = null): void;
 }

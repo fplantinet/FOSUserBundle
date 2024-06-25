@@ -61,10 +61,7 @@ class CanonicalFieldsUpdaterTest extends TestCase
         $this->assertSame('user@example.com', $user->getEmailCanonical());
     }
 
-    /**
-     * @return CanonicalizerInterface&MockObject
-     */
-    private function getMockCanonicalizer()
+    private function getMockCanonicalizer(): CanonicalizerInterface&MockObject
     {
         return $this->getMockBuilder('FOS\UserBundle\Util\CanonicalizerInterface')->getMock();
     }

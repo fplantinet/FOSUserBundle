@@ -16,9 +16,7 @@ interface CanonicalizerInterface
     /**
      * @param string|null $string
      *
-     * @return string|null
-     *
      * @phpstan-return ($string is null ? null : string)
      */
-    public function canonicalize($string);
+    public function canonicalize($string): ?string;
 }

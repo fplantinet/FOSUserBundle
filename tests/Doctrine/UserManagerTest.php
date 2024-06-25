@@ -101,10 +101,7 @@ class UserManagerTest extends TestCase
         $this->userManager->updateUser($user);
     }
 
-    /**
-     * @return mixed
-     */
-    protected function getUser()
+    protected function getUser(): mixed
     {
         $userClass = static::USER_CLASS;
 

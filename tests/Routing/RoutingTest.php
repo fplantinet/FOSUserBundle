@@ -52,7 +52,7 @@ class RoutingTest extends TestCase
     /**
      * @return iterable<array{string, string, string[]}>
      */
-    public function loadRoutingProvider()
+    public function loadRoutingProvider(): iterable
     {
         return [
             ['fos_user_change_password', '/change-password', ['GET', 'POST']],

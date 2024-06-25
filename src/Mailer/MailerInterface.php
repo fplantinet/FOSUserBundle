@@ -20,15 +20,11 @@ interface MailerInterface
 {
     /**
      * Send an email to a user to confirm the account creation.
-     *
-     * @return void
      */
-    public function sendConfirmationEmailMessage(UserInterface $user);
+    public function sendConfirmationEmailMessage(UserInterface $user): void;
 
     /**
      * Send an email to a user to confirm the password reset.
-     *
-     * @return void
      */
-    public function sendResettingEmailMessage(UserInterface $user);
+    public function sendResettingEmailMessage(UserInterface $user): void;
 }

@@ -28,7 +28,7 @@ class CanonicalizerTest extends TestCase
     /**
      * @return iterable<array{string|null, string|null}>
      */
-    public function canonicalizeProvider()
+    public function canonicalizeProvider(): iterable
     {
         return [
             [null, null],

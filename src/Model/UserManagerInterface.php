@@ -28,104 +28,80 @@ interface UserManagerInterface
 {
     /**
      * Creates an empty user instance.
-     *
-     * @return UserInterface
      */
-    public function createUser();
+    public function createUser(): UserInterface;
 
     /**
      * Deletes a user.
-     *
-     * @return void
      */
-    public function deleteUser(UserInterface $user);
+    public function deleteUser(UserInterface $user): void;
 
     /**
      * Finds one user by the given criteria.
      *
      * @param array<string, mixed> $criteria
-     *
-     * @return UserInterface|null
      */
-    public function findUserBy(array $criteria);
+    public function findUserBy(array $criteria): ?UserInterface;
 
     /**
      * Find a user by its username.
      *
      * @param string $username
-     *
-     * @return UserInterface|null
      */
-    public function findUserByUsername($username);
+    public function findUserByUsername($username): ?UserInterface;
 
     /**
      * Finds a user by its email.
      *
      * @param string $email
-     *
-     * @return UserInterface|null
      */
-    public function findUserByEmail($email);
+    public function findUserByEmail($email): ?UserInterface;
 
     /**
      * Finds a user by its username or email.
      *
      * @param string $usernameOrEmail
-     *
-     * @return UserInterface|null
      */
-    public function findUserByUsernameOrEmail($usernameOrEmail);
+    public function findUserByUsernameOrEmail($usernameOrEmail): ?UserInterface;
 
     /**
      * Finds a user by its confirmationToken.
      *
      * @param string $token
-     *
-     * @return UserInterface|null
      */
-    public function findUserByConfirmationToken($token);
+    public function findUserByConfirmationToken($token): ?UserInterface;
 
     /**
      * Returns a collection with all user instances.
      *
      * @return iterable<UserInterface>
      */
-    public function findUsers();
+    public function findUsers(): iterable;
 
     /**
      * Returns the user's fully qualified class name.
      *
-     * @return string
-     *
      * @phpstan-return class-string<UserInterface>
      */
-    public function getClass();
+    public function getClass(): string;
 
     /**
      * Reloads a user.
-     *
-     * @return void
      */
-    public function reloadUser(UserInterface $user);
+    public function reloadUser(UserInterface $user): void;
 
     /**
      * Updates a user.
-     *
-     * @return void
      */
-    public function updateUser(UserInterface $user);
+    public function updateUser(UserInterface $user): void;
 
     /**
      * Updates the canonical username and email fields for a user.
-     *
-     * @return void
      */
-    public function updateCanonicalFields(UserInterface $user);
+    public function updateCanonicalFields(UserInterface $user): void;
 
     /**
      * Updates a user password if a plain password is set.
-     *
-     * @return void
      */
-    public function updatePassword(UserInterface $user);
+    public function updatePassword(UserInterface $user): void;
 }

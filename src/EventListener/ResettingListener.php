@@ -52,20 +52,14 @@ final class ResettingListener implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @return void
-     */
-    public function onResettingResetInitialize(GetResponseUserEvent $event)
+    public function onResettingResetInitialize(GetResponseUserEvent $event): void
     {
         if (!$event->getUser()->isPasswordRequestNonExpired($this->tokenTtl)) {
             $event->setResponse(new RedirectResponse($this->router->generate('fos_user_resetting_request')));
         }
     }
 
-    /**
-     * @return void
-     */
-    public function onResettingResetSuccess(FormEvent $event)
+    public function onResettingResetSuccess(FormEvent $event): void
     {
         /** @var \FOS\UserBundle\Model\UserInterface $user */
         $user = $event->getForm()->getData();

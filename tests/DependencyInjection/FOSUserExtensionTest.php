@@ -363,9 +363,9 @@ class FOSUserExtensionTest extends TestCase
     }
 
     /**
-     * @return array
+     * @return iterable<array{string, string}>
      */
-    public function userManagerSetFactoryProvider()
+    public function userManagerSetFactoryProvider(): iterable
     {
         return [
             ['orm', 'doctrine'],
@@ -396,7 +396,7 @@ class FOSUserExtensionTest extends TestCase
      *
      * @return array<string, mixed>
      */
-    protected function getEmptyConfig()
+    protected function getEmptyConfig(): array
     {
         $yaml = <<<EOF
 db_driver: mongodb
@@ -416,7 +416,7 @@ EOF;
     /**
      * @return array<string, mixed>
      */
-    protected function getFullConfig()
+    protected function getFullConfig(): array
     {
         $yaml = <<<EOF
 db_driver: orm

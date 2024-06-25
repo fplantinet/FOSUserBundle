@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Tests\Model;
 
+use FOS\UserBundle\Model\User;
 use FOS\UserBundle\Model\UserManager;
 use FOS\UserBundle\Util\CanonicalFieldsUpdater;
 use FOS\UserBundle\Util\PasswordUpdaterInterface;
@@ -174,10 +175,7 @@ class UserManagerTest extends TestCase
         $this->assertSame($user, $actualUser);
     }
 
-    /**
-     * @return mixed
-     */
-    private function getUser()
+    private function getUser(): User&MockObject
     {
         return $this->getMockBuilder('FOS\UserBundle\Model\User')
             ->getMockForAbstractClass();
@@ -185,10 +183,8 @@ class UserManagerTest extends TestCase
 
     /**
      * @param array{PasswordUpdaterInterface, CanonicalFieldsUpdater} $args
-     *
-     * @return UserManager&MockObject
      */
-    private function getUserManager(array $args)
+    private function getUserManager(array $args): UserManager&MockObject
     {
         return $this->getMockBuilder('FOS\UserBundle\Model\UserManager')
             ->setConstructorArgs($args)
