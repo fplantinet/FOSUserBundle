@@ -211,10 +211,3 @@ An example is listed below.
         # ...
         service:
             mailer: app.custom_fos_user_mailer
-
-To see an example of a working implementation of the ``MailerInterface``
-see the `ZetaMailer`_ class of the `ZetaWebmailBundle`_. This implementation
-uses the Zeta Components Mail to send emails instead of the mailer component.
-
-.. _ZetaMailer: https://github.com/simplethings/ZetaWebmailBundle/blob/master/UserBundle/ZetaMailer.php
-.. _ZetaWebmailBundle: https://github.com/simplethings/ZetaWebmailBundle
