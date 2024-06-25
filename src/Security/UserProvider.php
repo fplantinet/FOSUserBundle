@@ -14,7 +14,6 @@ namespace FOS\UserBundle\Security;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
@@ -48,24 +47,6 @@ class UserProvider implements UserProviderInterface
         return $user;
     }
 
-    /**
-     * @param string $username
-     */
-    public function loadUserByUsername($username): SecurityUserInterface
-    {
-        $user = $this->findUser($username);
-
-        if (!$user) {
-            if (class_exists(UserNotFoundException::class)) {
-                throw new UserNotFoundException(sprintf('Username "%s" does not exist.', $username));
-            }
-
-            throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
-        }
-
-        return $user;
-    }
-
     public function refreshUser(SecurityUserInterface $user): SecurityUserInterface
     {
         if (!$user instanceof UserInterface) {
@@ -77,11 +58,7 @@ class UserProvider implements UserProviderInterface
         }
 
         if (null === $reloadedUser = $this->userManager->findUserBy(['id' => $user->getId()])) {
-            if (class_exists(UserNotFoundException::class)) {
-                throw new UserNotFoundException(sprintf('User with ID "%s" could not be reloaded.', $user->getId()));
-            }
-
-            throw new UsernameNotFoundException(sprintf('User with ID "%s" could not be reloaded.', $user->getId()));
+            throw new UserNotFoundException(sprintf('User with ID "%s" could not be reloaded.', $user->getId()));
         }
 
         return $reloadedUser;
