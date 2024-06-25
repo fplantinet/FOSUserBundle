@@ -26,7 +26,7 @@ class LoginManagerTest extends TestCase
 {
     public function testLogInUserWithRequestStack()
     {
-        $loginManager = $this->createLoginManager('main');
+        $loginManager = $this->createLoginManager();
         $loginManager->logInUser('main', $this->mockUser());
     }
 
@@ -40,11 +40,11 @@ class LoginManagerTest extends TestCase
             ->method('createRememberMeCookie')
             ->with($user);
 
-        $loginManager = $this->createLoginManager('main', $rememberMeHandler);
+        $loginManager = $this->createLoginManager($rememberMeHandler);
         $loginManager->logInUser('main', $user, $response);
     }
 
-    private function createLoginManager(string $firewallName, ?RememberMeHandlerInterface $rememberMeHandler = null): LoginManager
+    private function createLoginManager(?RememberMeHandlerInterface $rememberMeHandler = null): LoginManager
     {
         $tokenStorage = $this->getMockBuilder(TokenStorageInterface::class)->getMock();
         $tokenStorage
