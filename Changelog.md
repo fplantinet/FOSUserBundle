@@ -1,6 +1,16 @@
 Changelog
 =========
 
+### 4.0.0 (2024-07-04)
+
+* [BC break] Removed the CouchDB ODM integration
+* [BC break] Added return types in most methods
+* [BC break] Marked classes as final when they were `@final`
+* Removed support for symfony <6.4
+* Removed support for PHP <8.1
+* Remove the mailer implementation based on Swiftmailer
+* Added support for Symfony 7
+
 ### 3.4.0 (2024-06-25)
 
 * Deprecated the TwigSwiftMailer implementation
