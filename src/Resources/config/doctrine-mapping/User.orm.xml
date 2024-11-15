@@ -26,7 +26,7 @@
 
         <field name="passwordRequestedAt" column="password_requested_at" type="datetime" nullable="true" />
 
-        <field name="roles" column="roles" type="array" />
+        <field name="roles" column="roles" type="json" />
 
     </mapped-superclass>
 
