@@ -57,6 +57,8 @@ interface UserManagerInterface
      */
     public function findUserByEmail($email): ?UserInterface;
 
+    public function findUserByClient($client): ?UserInterface;
+
     /**
      * Finds a user by its username or email.
      *

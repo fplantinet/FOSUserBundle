@@ -37,6 +37,10 @@
             <argument type="service" id="fos_user.user_manager" />
         </service>
 
+        <service id="fos_user.user_provider.client" class="FOS\UserBundle\Security\ClientProvider" public="false">
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
+
         <service id="fos_user.security.controller" class="FOS\UserBundle\Controller\SecurityController" public="true">
             <argument type="service" id="security.authentication_utils" />
             <argument type="service" id="security.csrf.token_manager" on-invalid="null" />

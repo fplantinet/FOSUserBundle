@@ -49,6 +49,11 @@ abstract class UserManager implements UserManagerInterface
         return $this->findUserBy(['usernameCanonical' => $this->canonicalFieldsUpdater->canonicalizeUsername($username)]);
     }
 
+    public function findUserByClient($client): ?UserInterface
+    {
+        return $this->findUserBy(['client' => $this->canonicalFieldsUpdater->canonicalizeUsername($client)]);
+    }
+
     public function findUserByUsernameOrEmail($usernameOrEmail): ?UserInterface
     {
         if (preg_match('/^.+\@\S+\.\S+$/', $usernameOrEmail)) {
